@@ -1,0 +1,23 @@
+ <div class="row"> 
+  <div class="col-xs-12">
+    <button type="button" ng-click="getMessages()" class="btn btn-warning">Listar</button>
+    <button class="btn btn-danger" ng-click="exit()">Disconnect</button>
+    <input type="text" ng-model="msg.message" placeholder="Enter message..."></input>
+    <button class="btn btn-success" ng-click="send()">Send</button>
+    <button class="btn btn-danger" ng-click="destroy()">DESTROY!!!</button>
+
+  </div>
+
+  <div class="col-xs-12">
+    <input type="text" ng-model="query" class="form-control"/>
+    <ol>
+      <li ng-repeat="message in messages | filter:query">
+      <button type="button" ng-click="refresh($index)">refrescar</button>
+      <button type="button" ng-click="update($index)">actualizar</button>
+      <button type="button" ng-click="remove($index)">borrar</button>
+      {{message.user.username}} -> {{message.message}}
+      <input type="text" ng-model="message.message">
+      </li>
+    </ol>
+  </div>
+</div>

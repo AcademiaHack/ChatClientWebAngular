@@ -4,49 +4,61 @@ angular
 	.module('app')
 	.controller('MainController', 
 		function ($scope, $http, $window, Session, Message) {		
+			
+			/*$scope.user = {};
+			$scope.msg = {
+				selected: true
+			};
+			$scope.messages = [];
 
-			$scope.user = {};
+			/*$interval(function () {
+				if ($scope.isAccess()) {
+					$scope.getMessages();
+					console.log('update');
+				}
+			},2000);
+
+			$scope.send = function () {
+				$scope.messages.push(Message.save($scope.msg));
+				$scope.msg = {};
+			}
 
 			$scope.refresh = function (index) {
-				var message = $scope.messages[index];						
-				message.$get();				
+				$scope.messages[index].$get();
 			};
 
 			$scope.update = function (index) {
-				var message = $scope.messages[index];		
-				message.$update();
+				$scope.messages[index].$update();		
 
 				/*Message.update({id:message.id}, {message:'joder tio'}, function (message) {
 					console.log(message)
-				})*/
+				})
 			};
 
 			$scope.remove = function (index) {
-				var message = $scope.messages[index];				
-				message.$remove();
+				var message = $scope.messages[index].$remove();
 
 				$scope.messages.splice(index, 1);
 			}
 
+			$scope.destroy = function () {
+				$scope.messages = Message.destroyAll(function (response) { console.log(response);});
+			}
 
 			$scope.access = function () {			
-					//Session.access($scope.user);
-					Session.access($scope.user, function (user) {
-						console.log(user);					
-					});
+				Session.access($scope.user);
 			};
 
 			$scope.getMessages = function () {
-				$scope.messages = Message.query();	
+				$scope.messages = Message.query();
 			};
 
 			$scope.isAccess = function () {		
-				return !!$window.sessionStorage.user;
+				return Session.isConnected();
 			};	
 
 			$scope.exit = function () {
 				$window.sessionStorage.removeItem('user');
-			}
-
+			}*/
 		}
 	);

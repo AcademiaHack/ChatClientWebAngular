@@ -12,11 +12,14 @@ angular
 					url:'http://localhost:3000/users',
 					data: user
 				})
-				.success(function (userResponse) {
-					if (callback) callback(userResponse);
-					$window.sessionStorage.user = userResponse.id;				
+				.success(function (userResponse) {				
+					if (callback) callback(userResponse);	
+					$window.sessionStorage.setItem('user', userResponse.id);				
 				});	
+			},
+			isConnected: function () {
+				return !!$window.sessionStorage.user;
 			}
 		}
 
-	})
+	});

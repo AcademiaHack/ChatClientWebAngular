@@ -9,6 +9,11 @@ angular
 			{
 				update: {
 					method: 'put'
+				},
+				destroyAll: {
+					method: 'delete',
+					url: 'http://localhost:3000/messages/all',
+					isArray: true
 				}
 			}
 		)

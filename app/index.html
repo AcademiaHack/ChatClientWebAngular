@@ -24,30 +24,8 @@
     <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->    
-    <div class="container">
-    {{other}}
-      <div class="row">
-        <div class="col-xs-12" ng-hide="isAccess()">
-          <form ng-submit="access()">
-            <input type="text" ng-model="user.username" class="form-control"/>
-            <button class="btn btn-primary">Ingresar</button>
-          </form>
-        </div>
-        <div class="col-xs-12" ng-show="isAccess()">
-          <button type="button" ng-click="getMessages()" class="btn btn-warning">Listar</button>
-        </div>
-        <div class="col-xs-12" ng-show="isAccess()">
-          <input type="text" ng-model="query" class="form-control"/>
-          <ul>
-            <li ng-repeat="message in messages | filter:query">
-            <button type="button" ng-click="refresh($index)">refrescar</button>
-            <button type="button" ng-click="update($index)">actualizar</button>
-            <button type="button" ng-click="remove($index)">borrar</button>
-            {{message.user.username}} -> <input type="text" ng-model="message.message"></li>
-          </ul>
-        </div>
-      </div>
-
+    <div class="container" ui-view>
+         
     </div>
 
     <!-- build:js scripts/vendor.js -->
@@ -70,14 +48,18 @@
     <script src="/bower_components/bootstrap/js/collapse.js"></script>
     <script src="/bower_components/bootstrap/js/tab.js"></script>
     <script src="/bower_components/angular/angular.min.js"></script>
-    <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.min.js"></script> 
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>   
     <!-- endbuild -->
     
     <!-- build:js scripts/main.js -->
     <script src="scripts/app.js"></script>
+    <script src="scripts/states.js"></script>
     <script src="scripts/session-factory.js"></script>
     <script src="scripts/message-resource.js"></script>
     <script src="scripts/main-controller.js"></script>
+    <script src="scripts/controllers/access-controller.js"></script>
+    <script src="scripts/controllers/chat-controller.js"></script>
     <!-- endbuild -->
   </body>
 </html>
